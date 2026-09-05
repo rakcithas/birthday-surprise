@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Birthday Surprise ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page {
+            color: white;
+            padding: 25px;
+            animation: fadeIn 1.5s;
+        }
+
+        h1 {
+            font-size: 42px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 20px;
+        }
+
+        button {
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            background: white;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        #surprise {
+            display: none;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -30px;
+            font-size: 25px;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px white;
+            }
+
+            to {
+                text-shadow: 0 0 25px white;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FIRST PAGE -->
+    <div class="page" id="start">
+        <h1>Hey You 👀❤️</h1>
+
+        <p>I have a little surprise for you...</p>
+
+        <button onclick="startSurprise()">
+            OPEN ME 💌
+        </button>
+    </div>
+
+
+    <!-- SURPRISE PAGE -->
+    <div class="page" id="surprise">
+
+        <h1>🎂 HAPPY BIRTHDAY 🎂</h1>
+
+        <h2 id="countdown">3</h2>
+
+        <p id="message"></p>
+
+        <p>✨ You are a very special person ✨</p>
+
+        <p>💗 Stay happy, keep smiling & keep shining 💗</p>
+
+        <h2>🎁 Happy Birthday! 🥳</h2>
+
+    </div>
+
+
+    <script>
+
+        function startSurprise() {
+
+            document.getElementById("start").style.display = "none";
+
+            document.getElementById("surprise").style.display = "block";
+
+            let number = 3;
+
+            let countdown = setInterval(function() {
+
+                number--;
+
+                if (number > 0) {
+                    document.getElementById("countdown").innerHTML = number;
+                }
+
+                else {
+
+                    clearInterval(countdown);
+
+                    document.getElementById("countdown").innerHTML = "🎉";
+
+                    typeMessage();
+                }
+
+            }, 1000);
+        }
+
+
+        function typeMessage() {
+
+            let text =
+            "Happy Birthday to my favourite person! ❤️ May your day be filled with happiness, smiles and beautiful memories. ✨";
+
+            let i = 0;
+
+            let typing = setInterval(function() {
+
+                document.getElementById("message").innerHTML += text.charAt(i);
+
+                i++;
+
+                if (i >= text.length) {
+                    clearInterval(typing);
+                }
+
+            }, 60);
+        }
+
+
+        function createHeart() {
+
+            let heart = document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.innerHTML = "❤️";
+
+            heart.style.left = Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (3 + Math.random() * 3) + "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                heart.remove();
+            }, 6000);
+        }
+
+
+        setInterval(createHeart, 400);
+
+    </script>
+
+</body>
+</html>
