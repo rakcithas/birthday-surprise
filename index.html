@@ -113,7 +113,40 @@
     <!-- SURPRISE PAGE -->
     <div class="page" id="surprise">
 
-        <h1>🎂 HAPPY BIRTHDAY santhosh🎂</h1>
+        <h1>🎂 HAPPY BIRTHDAY SANTHOSH🎂</h1>
+        <!-- Birthday Song -->
+<audio id="birthdaySong" loop>
+    <source src="birthday-song.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<button onclick="playSong()" class="song-btn">
+    🎵 Play Our Song ❤️
+</button>
+
+<script>
+function playSong() {
+    const song = document.getElementById("birthdaySong");
+    song.play();
+}
+</script>
+
+<style>
+.song-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #ff69b4;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.song-btn:hover {
+    transform: scale(1.05);
+}
+</style>
 
         <h2 id="countdown">3</h2>
 
